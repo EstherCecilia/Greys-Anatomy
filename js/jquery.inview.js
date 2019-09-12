@@ -1,7 +1,3 @@
-/**
- * author Remy Sharp
- * url http://remysharp.com/2009/01/26/element-in-view-event-plugin/
- */
 (function ($) {
     function getViewportHeight() {
         var height = window.innerHeight; // Safari, Opera
@@ -22,7 +18,7 @@
                 document.documentElement.scrollTop :
                 document.body.scrollTop),
             elems = [];
-        
+
         // naughty, but this is how it knows which elements to check for
         $.each($.cache, function () {
             if (this.events && this.events.inview) {
@@ -40,7 +36,7 @@
                 if (scrolltop > (top + height) || scrolltop + vpH < top) {
                     if (inview) {
                         $el.data('inview', false);
-                        $el.trigger('inview', [ false ]);                        
+                        $el.trigger('inview', [ false ]);
                     }
                 } else if (scrolltop < (top + height)) {
                     if (!inview) {
@@ -51,7 +47,7 @@
             });
         }
     });
-    
+
     // kick the event to pick up any elements already in view.
     // note however, this only works if the plugin is included after the elements are bound to 'inview'
     $(function () {
